@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Kaduna</title>
+	<meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+   <!-- Bootstrap -->
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+	
+</head>
+<body>
+	<div class="container-fluid" id="text">
+		<table>
+			
+		</table>
+		
+		
+	</div>
+<script type="text/javascript">
+		const url = 'http://localhost:81/jambresultapi/public/api/jambresultapi';
+		let h = new Headers();
+		h.append('Accept','application/json');
+		h.append('app','123456789');
+		h.append('schoolcode','lagos');
+		let req = new Request(url,{
+			method: 'GET',
+			headers:h,
+			mode: 'cors'
+		});
+
+		getjambresult();
+		function getjambresult()
+		{
+				let divi = document.getElementById('text');
+				let output='';
+			fetch(req)
+			
+			.then(response =>{
+				return response.json();
+			}).then(data => {
+				console.log(data);
+				let jambform = document.getElementById('jambform');
+				
+				data.forEach( data =>{
+				
+				
+				
+				
+				
+
+
+
+
+
+				
+				
+				
+				
+					output = ` <div class="form-group row">
+      <label for="staticEmail" class="col-sm-1 col-form-label">First name</label>
+      <div class="col-sm-3">
+        <input type="text" name='firstname[]'  class="form-control-plaintext" id="staticEmail" value="${data.firstname}" readonly>
+      </div>
+	   <label for="staticEmail" class="col-sm-1 col-form-label">Middlename</label>
+      <div class="col-sm-3">
+        <input type="text" name='lastname[]' class="form-control-plaintext" id="staticEmail" value="${data.lastname}" readonly>
+      </div>
+	   <label for="staticEmail" class="col-sm-1 col-form-label">Surname</label>
+      <div class="col-sm-3">
+        <input type="text" name='surname[]' class="form-control-plaintext" id="staticEmail" value="${data.surname}" readonly>
+      </div>
+    </div>
+	
+	
+	<div class="form-group row">
+      <label for="staticEmail" class="col-sm-1 col-form-label">Email</label>
+      <div class="col-sm-3">
+        <input type="text" name='email[]'  class="form-control-plaintext" id="staticEmail" value="${data.email}" readonly>
+      </div>
+	   <label for="staticEmail" class="col-sm-1 col-form-label">Gender</label>
+      <div class="col-sm-3">
+        <input type="text" name='gender[]' class="form-control-plaintext" id="staticEmail" value="${data.gender}" readonly>
+      </div>
+	   <label for="staticEmail" class="col-sm-1 col-form-label">Permanent Address</label>
+      <div class="col-sm-3">
+        <input type="text" name='permanentaddress[]' class="form-control-plaintext" id="staticEmail" value="${data.permanentaddress}" readonly>
+      </div>
+    </div>
+	
+	<div class="form-group row">
+      <label for="staticEmail" class="col-sm-1 col-form-label">Nationality</label>
+      <div class="col-sm-3">
+        <input type="text" name='nationality[]'  class="form-control-plaintext" id="staticEmail" value="${data.nationality}" readonly>
+      </div>
+	   <label for="staticEmail" class="col-sm-1 col-form-label">State of Origin</label>
+      <div class="col-sm-3">
+        <input type="text" name='state[]' class="form-control-plaintext" id="staticEmail" value="${data.stateoforigin}" readonly>
+      </div>
+	   <label for="staticEmail" class="col-sm-1 col-form-label">Local Government</label>
+      <div class="col-sm-3">
+        <input type="text" name='lga[]' class="form-control-plaintext" id="staticEmail" value="${data.localgov}" readonly>
+      </div>
+    </div>
+	
+	
+	<div class="form-group row">
+      <label for="staticEmail" class="col-sm-1 col-form-label">Residential Address</label>
+      <div class="col-sm-3">
+        <input type="text" name='residentialaddress[]'  class="form-control-plaintext" id="staticEmail" value="${data.residentialaddress}" readonly>
+      </div>
+	   <label for="staticEmail" class="col-sm-1 col-form-label">Phone Number</label>
+      <div class="col-sm-3">
+        <input type="text" name='phone[]' class="form-control-plaintext" id="staticEmail" value="${data.phone}" readonly>
+      </div>
+	   <label for="staticEmail" class="col-sm-1 col-form-label">Jamb Reg</label>
+      <div class="col-sm-3">
+        <input type="text" name='jreg[]' class="form-control-plaintext" id="staticEmail" value="${data.jambreg}" readonly>
+      </div>
+    </div>
+	
+	
+	<div class="form-group row">
+      <label for="staticEmail" class="col-sm-1 col-form-label">First Choice</label>
+      <div class="col-sm-3">
+        <input type="text" name='first[]'  class="form-control-plaintext" id="staticEmail" value="${data.firstchoice}" readonly>
+      </div>
+	   <label for="staticEmail" class="col-sm-1 col-form-label">Second Choice</label>
+      <div class="col-sm-3">
+        <input type="text" name='second[]' class="form-control-plaintext" id="staticEmail" value="${data.secondchoice}" readonly>
+      </div>
+	   <label for="staticEmail" class="col-sm-1 col-form-label">Third Choice</label>
+      <div class="col-sm-3">
+        <input type="text" name='third[]' class="form-control-plaintext" id="staticEmail" value="${data.thirdchoice}" readonly>
+      </div>
+    </div>
+	
+	
+	<div class="form-group row">
+	<label for="staticEmail" class="col-sm-1 col-form-label">Fourth Choice</label>
+      <div class="col-sm-3">
+        <input type="text" name='fourth[]' class="form-control-plaintext" id="staticEmail" value="${data.fourthchoice}" readonly>
+      </div>
+      <label for="staticEmail" class="col-sm-1 col-form-label">First Subject</label>
+      <div class="col-sm-3">
+        <input type="text" name='firstsubject[]'  class="form-control-plaintext" id="staticEmail" value="${data.firstsuject}" readonly>
+      </div>
+	   <label for="staticEmail" class="col-sm-1 col-form-label">Second Subject</label>
+      <div class="col-sm-3">
+        <input type="text" name='secondsubject[]' class="form-control-plaintext" id="staticEmail" value="${data.secondsubject}" readonly>
+      </div>
+	   
+    </div>
+	
+	<div class="form-group row">
+      <label for="staticEmail" class="col-sm-1 col-form-label">Third Subject</label>
+      <div class="col-sm-3">
+        <input type="text" name='thirdsubject[]'  class="form-control-plaintext" id="staticEmail" value="${data.thirdsubject}" readonly>
+      </div>
+	   <label for="staticEmail" class="col-sm-1 col-form-label">Fourth Subject</label>
+      <div class="col-sm-3">
+        <input type="text" name='fourthsubject[]' class="form-control-plaintext" id="staticEmail" value="${data.fourthsubject}" readonly>
+      </div>
+	   <label for="staticEmail" class="col-sm-1 col-form-label">UTME SCORE</label>
+      <div class="col-sm-3">
+        <input type="text" name='utmescore[]' class="form-control-plaintext" id="staticEmail" value="${data.utmescore}" readonly>
+      </div>
+    </div>
+	<hr>
+   `;
+   jambform.insertAdjacentHTML('afterbegin',output);
+   
+					
+					
+					
+
+				});
+			}).catch(error => {
+				console.log(error);
+			});
+			
+			
+			
+		}
+		
+	</script>
+	
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+	<div class="container-fluid">
+	
+	
+	<form class="form" method="POST" action="<?php echo $_SERVER['PHP_SELF'] ?>" id="jambform">
+  
+   
+   
+    <button type="submit" class="btn btn-primary">Submit</button>
+  
+</form>
+	
+	
+				
+	</div>
+	<!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="js/bootstrap.min.js"></script>
+	<script>
+	let jambform = document.getElementById('jambform');
+			console.log(jambform);
+	</script>
+</body>
+</html>
+<!--<td><input type="text" name="product[]" value="<?php echo $row["product"]; ?>"></td>-->
